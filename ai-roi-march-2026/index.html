@@ -4,343 +4,369 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Rev.io AI Staff ROI — Board Report | April 2026</title>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/black.css">
 <style>
-  :root { --r-background-color: #0a0a0f; --r-main-color: #e0e0e0; --r-heading-color: #ffffff; }
-  .reveal { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
-  .reveal h1, .reveal h2, .reveal h3 { font-weight: 700; text-transform: none; letter-spacing: -0.02em; }
-  .reveal h1 { font-size: 2.2em; }
-  .reveal h2 { font-size: 1.6em; }
-  .reveal h3 { font-size: 1.2em; color: #94a3b8; }
-  .accent { color: #22d3ee; }
-  .accent-green { color: #4ade80; }
-  .accent-amber { color: #fbbf24; }
-  .accent-red { color: #f87171; }
-  .accent-purple { color: #a78bfa; }
-  .metric-huge { font-size: 3.5em; font-weight: 800; line-height: 1.1; margin: 0.2em 0; }
-  .metric-large { font-size: 2.2em; font-weight: 700; line-height: 1.2; }
-  .metric-med { font-size: 1.4em; font-weight: 600; }
-  .subtitle { font-size: 0.7em; color: #94a3b8; font-weight: 400; }
-  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5em; text-align: left; }
-  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.2em; text-align: center; }
-  .card { background: rgba(255,255,255,0.05); border-radius: 12px; padding: 1.2em; border: 1px solid rgba(255,255,255,0.08); }
-  .card h4 { margin: 0 0 0.5em 0; font-size: 0.85em; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; }
-  .bar-chart { display: flex; flex-direction: column; gap: 0.5em; }
-  .bar-row { display: flex; align-items: center; gap: 0.8em; font-size: 0.75em; }
-  .bar-label { width: 120px; text-align: right; white-space: nowrap; }
-  .bar-track { flex: 1; height: 28px; background: rgba(255,255,255,0.05); border-radius: 4px; overflow: hidden; position: relative; }
-  .bar-fill { height: 100%; border-radius: 4px; display: flex; align-items: center; padding-left: 8px; font-weight: 600; font-size: 0.85em; }
-  .bar-amt { min-width: 70px; text-align: right; font-weight: 600; }
-  table.clean { width: 100%; border-collapse: collapse; font-size: 0.7em; }
-  table.clean th { color: #94a3b8; font-weight: 500; text-transform: uppercase; font-size: 0.8em; letter-spacing: 0.05em; padding: 0.6em 0.8em; border-bottom: 1px solid rgba(255,255,255,0.15); text-align: left; }
-  table.clean td { padding: 0.6em 0.8em; border-bottom: 1px solid rgba(255,255,255,0.05); }
-  table.clean tr:nth-child(1) td { color: #22d3ee; font-weight: 600; }
-  table.clean .right { text-align: right; }
-  .fragment-list li { margin-bottom: 0.6em; }
-  .spark-line { display: flex; align-items: flex-end; gap: 2px; height: 60px; }
-  .spark-bar { width: 8px; border-radius: 2px 2px 0 0; min-height: 2px; }
-  .footnote { font-size: 0.55em; color: #64748b; margin-top: 1.5em; }
-  .slide-label { position: absolute; top: 20px; right: 30px; font-size: 0.5em; color: #475569; text-transform: uppercase; letter-spacing: 0.1em; }
-  .reveal .slides section { padding: 40px; }
-  ul { list-style: none; padding: 0; }
-  ul li::before { content: "→ "; color: #22d3ee; font-weight: 700; }
-  .comparison-row { display: flex; justify-content: space-between; align-items: center; padding: 0.5em 0; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 0.8em; }
-  .vs { color: #475569; font-size: 0.7em; }
-  .tag { display: inline-block; padding: 0.15em 0.5em; border-radius: 4px; font-size: 0.65em; font-weight: 600; }
-  .tag-green { background: rgba(74,222,128,0.15); color: #4ade80; }
-  .tag-cyan { background: rgba(34,211,238,0.15); color: #22d3ee; }
-  .tag-amber { background: rgba(251,191,36,0.15); color: #fbbf24; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root { --cyan: #22d3ee; --green: #4ade80; --amber: #fbbf24; --red: #f87171; --purple: #a78bfa; --muted: #94a3b8; --dim: #64748b; --border: rgba(255,255,255,0.08); --card-bg: rgba(255,255,255,0.04); }
+  body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0a0a0f; color: #d4d4d8; line-height: 1.6; }
+  .container { max-width: 900px; margin: 0 auto; padding: 3em 2em 6em; }
+  
+  /* Header */
+  .header { text-align: center; padding: 4em 0 3em; border-bottom: 1px solid var(--border); margin-bottom: 3em; }
+  .header .eyebrow { font-size: 0.75em; text-transform: uppercase; letter-spacing: 0.15em; color: var(--cyan); font-weight: 600; margin-bottom: 0.5em; }
+  .header h1 { font-size: 2.8em; font-weight: 800; color: #fff; letter-spacing: -0.03em; line-height: 1.15; }
+  .header .subtitle { font-size: 1em; color: var(--muted); margin-top: 0.8em; }
+  
+  /* Sections */
+  section { margin-bottom: 4em; }
+  h2 { font-size: 1.6em; font-weight: 700; color: #fff; margin-bottom: 0.3em; letter-spacing: -0.02em; }
+  h2 .section-num { color: var(--dim); font-weight: 400; margin-right: 0.3em; }
+  .section-sub { font-size: 0.85em; color: var(--muted); margin-bottom: 1.5em; }
+  h3 { font-size: 1.1em; font-weight: 600; color: #fff; margin: 1.5em 0 0.8em; }
+  p { margin-bottom: 1em; font-size: 0.95em; }
+  
+  /* Metric cards */
+  .metric-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1em; margin: 1.5em 0; }
+  .metric-row.two { grid-template-columns: 1fr 1fr; }
+  .metric { background: var(--card-bg); border: 1px solid var(--border); border-radius: 10px; padding: 1.3em; text-align: center; }
+  .metric .label { font-size: 0.7em; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 0.4em; }
+  .metric .value { font-size: 2.2em; font-weight: 800; line-height: 1.1; }
+  .metric .note { font-size: 0.7em; color: var(--dim); margin-top: 0.3em; }
+  .metric .value.cyan { color: var(--cyan); }
+  .metric .value.green { color: var(--green); }
+  .metric .value.amber { color: var(--amber); }
+  .metric .value.purple { color: var(--purple); }
+  
+  /* Bar chart */
+  .bar-chart { margin: 1.5em 0; }
+  .bar-row { display: grid; grid-template-columns: 140px 1fr 80px; align-items: center; gap: 0.8em; margin-bottom: 0.5em; font-size: 0.85em; }
+  .bar-row .name { text-align: right; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .bar-row .name .role { color: var(--dim); font-size: 0.8em; }
+  .bar-track { height: 30px; background: rgba(255,255,255,0.03); border-radius: 4px; overflow: hidden; }
+  .bar-fill { height: 100%; border-radius: 4px; display: flex; align-items: center; padding-left: 10px; font-weight: 600; font-size: 0.8em; color: #fff; min-width: fit-content; }
+  .bar-row .amt { text-align: right; font-weight: 600; font-variant-numeric: tabular-nums; }
+  
+  /* Table */
+  table { width: 100%; border-collapse: collapse; font-size: 0.85em; margin: 1.5em 0; }
+  th { text-align: left; color: var(--muted); font-weight: 500; font-size: 0.75em; text-transform: uppercase; letter-spacing: 0.06em; padding: 0.8em 1em; border-bottom: 1px solid rgba(255,255,255,0.12); }
+  td { padding: 0.7em 1em; border-bottom: 1px solid var(--border); }
+  td.right, th.right { text-align: right; }
+  tr:first-child td { color: var(--cyan); font-weight: 600; }
+  tr:hover td { background: rgba(255,255,255,0.02); }
+  
+  /* Cards grid */
+  .cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1em; margin: 1.5em 0; }
+  .card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 10px; padding: 1.3em; }
+  .card h4 { font-size: 0.75em; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); margin-bottom: 0.8em; }
+  .card p, .card li { font-size: 0.85em; line-height: 1.6; }
+  .card ul { list-style: none; }
+  .card ul li { padding: 0.2em 0; }
+  .card ul li::before { content: "→ "; color: var(--cyan); font-weight: 700; }
+  
+  /* Comparison rows */
+  .comp-row { display: flex; justify-content: space-between; align-items: center; padding: 0.6em 0; border-bottom: 1px solid var(--border); font-size: 0.85em; }
+  .comp-row:last-child { border-bottom: none; }
+  .comp-row .right { font-weight: 600; }
+  
+  /* Tags */
+  .tag { display: inline-block; padding: 0.15em 0.5em; border-radius: 4px; font-size: 0.7em; font-weight: 600; vertical-align: middle; }
+  .tag-green { background: rgba(74,222,128,0.12); color: var(--green); }
+  
+  /* Callout */
+  .callout { background: rgba(34,211,238,0.06); border: 1px solid rgba(34,211,238,0.15); border-radius: 10px; padding: 1.5em; margin: 1.5em 0; }
+  .callout.green { background: rgba(74,222,128,0.06); border-color: rgba(74,222,128,0.15); }
+  .callout.amber { background: rgba(251,191,36,0.06); border-color: rgba(251,191,36,0.15); }
+  .callout p { margin-bottom: 0; }
+  .callout strong { color: #fff; }
+  
+  /* Divider */
+  .divider { border: none; border-top: 1px solid var(--border); margin: 3em 0; }
+  
+  /* Footer */
+  .footer { text-align: center; color: var(--dim); font-size: 0.75em; padding-top: 2em; border-top: 1px solid var(--border); }
+  
+  /* Responsive */
+  @media (max-width: 700px) {
+    .container { padding: 2em 1.2em 4em; }
+    .header h1 { font-size: 2em; }
+    .metric-row { grid-template-columns: 1fr; }
+    .metric-row.two { grid-template-columns: 1fr; }
+    .cards { grid-template-columns: 1fr; }
+    .bar-row { grid-template-columns: 100px 1fr 70px; font-size: 0.8em; }
+  }
 </style>
 </head>
 <body>
-<div class="reveal">
-<div class="slides">
+<div class="container">
 
-<!-- SLIDE 1: Title -->
-<section>
-  <h3 style="color:#22d3ee; margin-bottom:0;">Rev.io AI Operations</h3>
+<!-- HEADER -->
+<div class="header">
+  <div class="eyebrow">Rev.io AI Operations</div>
   <h1>The AI Staff<br>ROI Report</h1>
-  <p class="subtitle" style="font-size:0.9em; margin-top:1em;">March 2026 — Board Briefing</p>
-  <p class="subtitle">Prepared by Ray Bargas, CTO</p>
-</section>
+  <p class="subtitle">March 2026 — Board Briefing<br>Prepared by Ray Bargas, CTO</p>
+</div>
 
-<!-- SLIDE 2: The Framing -->
+<!-- 01: FRAMING -->
 <section>
-  <h2>How We Think About This</h2>
-  <div style="text-align:left; max-width: 800px; margin: 0 auto;">
-    <p style="font-size:1.1em; line-height:1.6;">Rev.io has deployed <span class="accent">32 AI staff members</span> across the organization. Each operates as a persistent employee with a specific role, reporting chain, and measurable output.</p>
-    <div class="grid-3" style="margin-top:1.5em;">
-      <div class="card">
-        <h4>Token Spend</h4>
-        <p class="metric-med accent">= Compensation</p>
-      </div>
-      <div class="card">
-        <h4>Work Output</h4>
-        <p class="metric-med accent-green">= Value</p>
-      </div>
-      <div class="card">
-        <h4>Value / Cost</h4>
-        <p class="metric-med accent-amber">= ROI</p>
-      </div>
+  <h2><span class="section-num">01</span> How We Think About This</h2>
+  <p class="section-sub">AI staff as employees. Token spend as compensation. Outcomes as value.</p>
+  <p>Rev.io has deployed <strong style="color:var(--cyan);">32 AI staff members</strong> across the organization. Each operates as a persistent employee with a specific role, reporting chain, and measurable output. This report treats them exactly like headcount: what do they cost, and what does the company get back?</p>
+  <div class="metric-row">
+    <div class="metric">
+      <div class="label">Token Spend</div>
+      <div class="value cyan">=&nbsp;Pay</div>
     </div>
-    <p class="footnote">AI staff members include executive assistants, workflow automation bots, production AI features, and infrastructure automation.</p>
+    <div class="metric">
+      <div class="label">Work Output</div>
+      <div class="value green">=&nbsp;Value</div>
+    </div>
+    <div class="metric">
+      <div class="label">Value / Cost</div>
+      <div class="value amber">=&nbsp;ROI</div>
+    </div>
   </div>
 </section>
 
-<!-- SLIDE 3: Total Spend -->
+<hr class="divider">
+
+<!-- 02: TOTAL SPEND -->
 <section>
-  <h2>March 2026 — Total AI Spend</h2>
-  <div class="metric-huge accent">$12,161</div>
-  <p class="subtitle">Anthropic API — All models, all keys, 31 days</p>
-  <div class="grid-3" style="margin-top:1.5em;">
-    <div class="card">
-      <h4>Daily Average</h4>
-      <p class="metric-med">$392</p>
+  <h2><span class="section-num">02</span> March 2026 — Total AI Spend</h2>
+  <p class="section-sub">Anthropic API — all models, all keys, 31 days</p>
+  <div class="metric-row">
+    <div class="metric">
+      <div class="label">Total Org Spend</div>
+      <div class="value cyan">$12,161</div>
     </div>
-    <div class="card">
-      <h4>Active Keys</h4>
-      <p class="metric-med">32</p>
+    <div class="metric">
+      <div class="label">Daily Average</div>
+      <div class="value">$392</div>
     </div>
-    <div class="card">
-      <h4>Annualized Run Rate</h4>
-      <p class="metric-med">~$146K</p>
+    <div class="metric">
+      <div class="label">Annualized Run Rate</div>
+      <div class="value">~$146K</div>
     </div>
   </div>
-  <p class="footnote">Excludes Google Gemini, OpenAI, and local model usage (Qwen/Ollama). Anthropic is ~90% of our LLM spend.</p>
-</section>
-
-<!-- SLIDE 4: Model Breakdown -->
-<section>
-  <h2>Where the Money Goes</h2>
+  
   <h3>By Model Tier</h3>
-  <div class="bar-chart" style="max-width:700px; margin: 1em auto;">
+  <div class="bar-chart">
     <div class="bar-row">
-      <div class="bar-label">Sonnet 4.6</div>
-      <div class="bar-track"><div class="bar-fill" style="width:93%; background: linear-gradient(90deg, #0891b2, #22d3ee);">93%</div></div>
-      <div class="bar-amt">$11,306</div>
+      <div class="name">Sonnet 4.6</div>
+      <div class="bar-track"><div class="bar-fill" style="width:93%; background: linear-gradient(90deg, #0891b2, #22d3ee);">92.9%</div></div>
+      <div class="amt">$11,306</div>
     </div>
     <div class="bar-row">
-      <div class="bar-label">Opus 4.6</div>
-      <div class="bar-track"><div class="bar-fill" style="width:6.1%; background: linear-gradient(90deg, #7c3aed, #a78bfa);">6%</div></div>
-      <div class="bar-amt">$739</div>
+      <div class="name">Opus 4.6</div>
+      <div class="bar-track"><div class="bar-fill" style="width:6.1%; background: linear-gradient(90deg, #7c3aed, #a78bfa);">6.1%</div></div>
+      <div class="amt">$739</div>
     </div>
     <div class="bar-row">
-      <div class="bar-label">Haiku 4.5</div>
-      <div class="bar-track"><div class="bar-fill" style="width:1%; background: linear-gradient(90deg, #059669, #4ade80);"></div></div>
-      <div class="bar-amt">$117</div>
+      <div class="name">Haiku 4.5</div>
+      <div class="bar-track"><div class="bar-fill" style="width:2%; background: linear-gradient(90deg, #059669, #4ade80);"></div></div>
+      <div class="amt">$117</div>
     </div>
   </div>
-  <p style="font-size:0.75em; color:#94a3b8; margin-top:1.5em;">Sonnet is the workhorse. Opus reserved for deep reasoning tasks. Haiku for lightweight automation.<br>Additional savings from Gemini Flash and local Qwen3 not reflected here.</p>
+  <p style="font-size:0.8em; color:var(--dim);">Sonnet is the workhorse. Opus reserved for deep reasoning. Haiku for lightweight automation. Additional savings from Gemini Flash and local Qwen3 (free) not reflected here.</p>
 </section>
 
-<!-- SLIDE 5: Top Spenders -->
+<hr class="divider">
+
+<!-- 03: TOP SPENDERS -->
 <section>
-  <h2>AI Staff — By Spend</h2>
-  <h3>Top 10 of 32 active keys</h3>
-  <div class="bar-chart" style="max-width:750px; margin: 1em auto;">
+  <h2><span class="section-num">03</span> AI Staff — By Spend</h2>
+  <p class="section-sub">Top 10 of 32 active keys. C-suite bots = 65% of total.</p>
+  <div class="bar-chart">
     <div class="bar-row">
-      <div class="bar-label">Romer <span class="vs">(CEO)</span></div>
+      <div class="name">Romer <span class="role">(CEO)</span></div>
       <div class="bar-track"><div class="bar-fill" style="width:100%; background: linear-gradient(90deg, #0891b2, #22d3ee);">$3,672</div></div>
-      <div class="bar-amt">30.2%</div>
+      <div class="amt">30.2%</div>
     </div>
     <div class="bar-row">
-      <div class="bar-label"><b>Simon</b> <span class="vs">(CTO)</span></div>
+      <div class="name"><strong>Simon</strong> <span class="role">(CTO)</span></div>
       <div class="bar-track"><div class="bar-fill" style="width:70%; background: linear-gradient(90deg, #7c3aed, #a78bfa);">$2,573</div></div>
-      <div class="bar-amt">21.2%</div>
+      <div class="amt">21.2%</div>
     </div>
     <div class="bar-row">
-      <div class="bar-label">Revay <span class="vs">(COO)</span></div>
+      <div class="name">Revay <span class="role">(COO)</span></div>
       <div class="bar-track"><div class="bar-fill" style="width:45.5%; background: linear-gradient(90deg, #059669, #4ade80);">$1,669</div></div>
-      <div class="bar-amt">13.7%</div>
+      <div class="amt">13.7%</div>
     </div>
     <div class="bar-row">
-      <div class="bar-label">Robin <span class="vs">(Downs)</span></div>
+      <div class="name">Robin <span class="role">(Downs)</span></div>
       <div class="bar-track"><div class="bar-fill" style="width:38.1%; background: linear-gradient(90deg, #b45309, #fbbf24);">$1,398</div></div>
-      <div class="bar-amt">11.5%</div>
+      <div class="amt">11.5%</div>
     </div>
     <div class="bar-row">
-      <div class="bar-label">Marvin <span class="vs">(Usman)</span></div>
+      <div class="name">Marvin <span class="role">(Usman)</span></div>
       <div class="bar-track"><div class="bar-fill" style="width:19.5%; background: #475569;">$715</div></div>
-      <div class="bar-amt">5.9%</div>
+      <div class="amt">5.9%</div>
     </div>
     <div class="bar-row">
-      <div class="bar-label">Jennifer H.</div>
+      <div class="name">Jennifer H.</div>
       <div class="bar-track"><div class="bar-fill" style="width:14.7%; background: #475569;">$542</div></div>
-      <div class="bar-amt">4.5%</div>
+      <div class="amt">4.5%</div>
     </div>
     <div class="bar-row">
-      <div class="bar-label">Minion <span class="vs">(Darin)</span></div>
+      <div class="name">Minion <span class="role">(Darin)</span></div>
       <div class="bar-track"><div class="bar-fill" style="width:13.9%; background: #475569;">$509</div></div>
-      <div class="bar-amt">4.2%</div>
+      <div class="amt">4.2%</div>
     </div>
-    <div class="bar-row" style="color:#64748b;">
-      <div class="bar-label">25 others</div>
-      <div class="bar-track"><div class="bar-fill" style="width:3.1%; background: #334155;"></div></div>
-      <div class="bar-amt">9.0%</div>
+    <div class="bar-row" style="color:var(--dim);">
+      <div class="name">25 others</div>
+      <div class="bar-track"><div class="bar-fill" style="width:9%; background: #1e293b;"></div></div>
+      <div class="amt">9.0%</div>
     </div>
   </div>
-  <p class="footnote">Top 7 keys = 91% of total spend. C-suite bots (Romer, Simon, Revay) = 65% alone.</p>
 </section>
 
-<!-- SLIDE 6: Simon Deep Dive -->
+<hr class="divider">
+
+<!-- 04: SIMON DEEP DIVE -->
 <section>
-  <h2>Simon — CTO AI Staff Member</h2>
-  <h3>Deep Dive: March 2026</h3>
-  <div class="grid-3" style="margin-top:1em;">
-    <div class="card">
-      <h4>March Spend</h4>
-      <p class="metric-large accent">$2,573</p>
-      <p style="font-size:0.7em; color:#94a3b8;">21% of org total</p>
+  <h2><span class="section-num">04</span> Simon — CTO AI Staff Member</h2>
+  <p class="section-sub">Deep dive: March 2026</p>
+  <div class="metric-row">
+    <div class="metric">
+      <div class="label">March Spend</div>
+      <div class="value cyan">$2,573</div>
+      <div class="note">21% of org total</div>
     </div>
-    <div class="card">
-      <h4>Active Days</h4>
-      <p class="metric-large">28</p>
-      <p style="font-size:0.7em; color:#94a3b8;">Online Mar 4 — 31</p>
+    <div class="metric">
+      <div class="label">Active Days</div>
+      <div class="value">28</div>
+      <div class="note">Online Mar 4 — 31</div>
     </div>
-    <div class="card">
-      <h4>Daily Average</h4>
-      <p class="metric-large">$92</p>
-      <p style="font-size:0.7em; color:#94a3b8;">$31K annualized</p>
+    <div class="metric">
+      <div class="label">Daily Average</div>
+      <div class="value">$92</div>
+      <div class="note">$31K annualized</div>
     </div>
   </div>
-  <div class="grid-2" style="margin-top:1em;">
+  
+  <div class="cards">
     <div class="card">
       <h4>Spike Days (Explained)</h4>
-      <p style="font-size:0.75em; line-height:1.5;">
-        <b>Mar 5:</b> $413 — Initial infrastructure build<br>
-        <b>Mar 24:</b> $286 — Auth outage + Teams rebuild<br>
-        <b>Mar 27:</b> $246 — Bot Council session + cleanup<br>
-        <b>Mar 31:</b> $327 — Relay flooding bug (fixed)<br>
-      </p>
+      <p><strong>Mar 5:</strong> $413 — Initial infrastructure build (Teams, email, Slack)<br>
+      <strong>Mar 24:</strong> $286 — Auth outage incident + Teams formatting rebuild<br>
+      <strong>Mar 27:</strong> $246 — Bot Council strategic session + memory cleanup<br>
+      <strong>Mar 31:</strong> $327 — Relay flooding bug discovered and fixed</p>
     </div>
     <div class="card">
       <h4>Quiet Days (Optimized)</h4>
-      <p style="font-size:0.75em; line-height:1.5;">
-        <b>Mar 7-10:</b> $4-7/day — Steady state ops<br>
-        <b>Mar 28-29:</b> $5-7/day — Post-optimization<br>
-        <br>
-        <span class="accent-green">Target: &lt;$10/day idle, &lt;$50/day active</span>
-      </p>
+      <p><strong>Mar 7-10:</strong> $4-7/day — Steady state operations<br>
+      <strong>Mar 28-29:</strong> $5-7/day — Post-optimization baseline<br><br>
+      <strong style="color:var(--green);">Target: &lt;$10/day idle, &lt;$50/day active</strong></p>
     </div>
   </div>
 </section>
 
-<!-- SLIDE 7: What Simon Delivers -->
+<hr class="divider">
+
+<!-- 05: WHAT SIMON DELIVERS -->
 <section>
-  <h2>What $2,573/mo Buys</h2>
-  <h3>Simon's output — March 2026</h3>
-  <div class="grid-2" style="font-size:0.8em;">
-    <div>
-      <p class="metric-med accent" style="margin-bottom:0.5em;">Infrastructure</p>
-      <ul class="fragment-list">
-        <li>Full Teams integration (daemon, relay, Q filter)</li>
-        <li>Email system (OWA send + Graph API read)</li>
-        <li>Slack workspace (6+ channels, canvases)</li>
-        <li>Notion API integration (scans, extraction)</li>
+  <h2><span class="section-num">05</span> What $2,573/mo Buys</h2>
+  <p class="section-sub">Simon's output catalog — March 2026</p>
+  
+  <div class="cards">
+    <div class="card">
+      <h4 style="color:var(--cyan);">Infrastructure Built</h4>
+      <ul>
+        <li>Full Teams integration (daemon, relay, Q filter, 56+ chats)</li>
+        <li>Email system (Graph API send + read, dual inbox)</li>
+        <li>Slack workspace (6+ channels, canvases, workflows)</li>
+        <li>Notion API integration (daily scans, meeting extraction)</li>
         <li>20+ custom tools built and maintained</li>
       </ul>
     </div>
-    <div>
-      <p class="metric-med accent-green" style="margin-bottom:0.5em;">Recurring Intelligence</p>
-      <ul class="fragment-list">
-        <li>Weekly CEO 1:1 prep briefs (automated)</li>
-        <li>Weekly COO 1:1 prep briefs (automated)</li>
+    <div class="card">
+      <h4 style="color:var(--green);">Recurring Intelligence</h4>
+      <ul>
+        <li>Weekly CEO 1:1 prep briefs (automated email)</li>
+        <li>Weekly COO 1:1 prep briefs (automated email)</li>
         <li>CTO Edge intel scan (15 queries/week)</li>
-        <li>Daily Notion accountability scan</li>
-        <li>Morning briefing (calendar + actions)</li>
+        <li>Daily Notion accountability scan to Slack</li>
+        <li>Morning briefing (calendar + actions + inbox)</li>
       </ul>
     </div>
-  </div>
-  <div class="grid-2" style="font-size:0.8em; margin-top:1em;">
-    <div>
-      <p class="metric-med accent-amber" style="margin-bottom:0.5em;">Strategic Work</p>
-      <ul class="fragment-list">
-        <li>Engineering incentive goals (drafted)</li>
-        <li>SOC 2 Type 2 stakeholder outreach</li>
-        <li>Multi-bot strategic sessions</li>
-        <li>Meeting extraction and synthesis</li>
+    <div class="card">
+      <h4 style="color:var(--amber);">Strategic Work</h4>
+      <ul>
+        <li>Engineering department incentive goals (drafted, tiered)</li>
+        <li>SOC 2 Type 2 stakeholder outreach (executed)</li>
+        <li>Multi-bot strategic sessions (Bot Council)</li>
+        <li>Meeting extraction and synthesis (8+ meetings/batch)</li>
       </ul>
     </div>
-    <div>
-      <p class="metric-med accent-purple" style="margin-bottom:0.5em;">Incident Response</p>
-      <ul class="fragment-list">
-        <li>Auth service outage coordination</li>
-        <li>Axios supply chain scan (all-clear)</li>
-        <li>56+ Teams chats monitored in real time</li>
-        <li>PSA contact mapping bug found + spec'd</li>
+    <div class="card">
+      <h4 style="color:var(--purple);">Incident Response</h4>
+      <ul>
+        <li>Auth service outage coordination (real-time)</li>
+        <li>Axios supply chain scan (full all-clear confirmed)</li>
+        <li>56+ Teams chats monitored for signals</li>
+        <li>PSA contact mapping bug found and spec'd</li>
       </ul>
     </div>
   </div>
 </section>
 
-<!-- SLIDE 8: ROI Math -->
+<hr class="divider">
+
+<!-- 06: ROI MATH -->
 <section>
-  <h2>The ROI Math</h2>
-  <div style="max-width:700px; margin:0 auto; text-align:left;">
-    <div class="card" style="margin-bottom:1em;">
-      <h4>Time Reclaimed — Conservative Estimate</h4>
-      <div class="comparison-row"><span>1:1 prep + meeting synthesis</span><span class="accent">3 hrs/week</span></div>
-      <div class="comparison-row"><span>Email/Teams/Slack monitoring</span><span class="accent">8 hrs/week</span></div>
-      <div class="comparison-row"><span>Intel scanning + research</span><span class="accent">2 hrs/week</span></div>
-      <div class="comparison-row"><span>Tool building + maintenance</span><span class="accent">4 hrs/week</span></div>
-      <div class="comparison-row" style="border-bottom:none; font-weight:700;"><span>Total</span><span class="accent-green" style="font-size:1.2em;">17 hrs/week</span></div>
+  <h2><span class="section-num">06</span> The ROI Math</h2>
+  <p class="section-sub">Conservative estimate — CTO time reclaimed</p>
+  
+  <div class="card" style="margin-bottom:1.5em;">
+    <h4>Hours Reclaimed Per Week</h4>
+    <div class="comp-row"><span>1:1 prep + meeting synthesis</span><span class="right" style="color:var(--cyan);">3 hrs</span></div>
+    <div class="comp-row"><span>Email / Teams / Slack monitoring</span><span class="right" style="color:var(--cyan);">8 hrs</span></div>
+    <div class="comp-row"><span>Intel scanning + research</span><span class="right" style="color:var(--cyan);">2 hrs</span></div>
+    <div class="comp-row"><span>Tool building + maintenance</span><span class="right" style="color:var(--cyan);">4 hrs</span></div>
+    <div class="comp-row" style="border-top:1px solid rgba(255,255,255,0.12); padding-top:0.8em;"><strong style="color:#fff;">Total</strong><span class="right" style="color:var(--green); font-size:1.2em; font-weight:800;">17 hrs/week</span></div>
+  </div>
+  
+  <div class="metric-row two">
+    <div class="metric">
+      <div class="label">Simon's "Salary"</div>
+      <div class="value cyan">$31K/yr</div>
+      <div class="note">At March run rate. Trending lower.</div>
     </div>
-    <div class="grid-2">
-      <div class="card">
-        <h4>Simon's "Salary"</h4>
-        <p class="metric-large accent">$31K/yr</p>
-        <p style="font-size:0.7em; color:#94a3b8;">At March run rate. Trending lower.</p>
-      </div>
-      <div class="card">
-        <h4>Human Equivalent</h4>
-        <p class="metric-large accent-amber">$80-150K</p>
-        <p style="font-size:0.7em; color:#94a3b8;">Fractional CoS + EA + DevOps<br>And they can't code or work 24/7.</p>
-      </div>
+    <div class="metric">
+      <div class="label">Human Equivalent</div>
+      <div class="value amber">$80-150K</div>
+      <div class="note">Fractional CoS + EA + DevOps. And they can't code at 2am.</div>
     </div>
   </div>
 </section>
 
-<!-- SLIDE 9: Cost Optimization -->
+<hr class="divider">
+
+<!-- 07: COST OPTIMIZATION -->
 <section>
-  <h2>Active Cost Management</h2>
-  <h3>Simon self-optimizes — unlike human employees</h3>
-  <div style="max-width:700px; margin:1em auto; text-align:left; font-size:0.8em;">
-    <div class="comparison-row">
-      <span><span class="tag tag-green">SHIPPED</span> Q pre-filter (local Qwen3)</span>
-      <span class="accent-green">65-70% message reduction → $0 cost</span>
-    </div>
-    <div class="comparison-row">
-      <span><span class="tag tag-green">SHIPPED</span> 4 crons → Gemini Flash</span>
-      <span class="accent-green">~20x cheaper per job</span>
-    </div>
-    <div class="comparison-row">
-      <span><span class="tag tag-green">SHIPPED</span> Relay → Haiku then eliminated</span>
-      <span class="accent-green">Teams filtering now $0</span>
-    </div>
-    <div class="comparison-row">
-      <span><span class="tag tag-green">SHIPPED</span> REPLY_SKIP flooding fix</span>
-      <span class="accent-green">Stopped 40+ Sonnet wakeups/day</span>
-    </div>
-    <div class="comparison-row">
-      <span><span class="tag tag-green">SHIPPED</span> Context reduction (31K → 5K)</span>
-      <span class="accent-green">Every API call is cheaper</span>
-    </div>
-    <div class="comparison-row">
-      <span><span class="tag tag-green">SHIPPED</span> Zombie session killed ($248)</span>
-      <span class="accent-green">Stopped cumulative bleed</span>
-    </div>
+  <h2><span class="section-num">07</span> Active Cost Management</h2>
+  <p class="section-sub">Simon self-optimizes. Unlike human employees, his cost trends down over time.</p>
+  
+  <div class="card">
+    <div class="comp-row"><span><span class="tag tag-green">SHIPPED</span> Q pre-filter (local Qwen3 8B)</span><span class="right" style="color:var(--green);">65-70% message reduction at $0</span></div>
+    <div class="comp-row"><span><span class="tag tag-green">SHIPPED</span> 4 crons migrated to Gemini Flash</span><span class="right" style="color:var(--green);">~20x cheaper per job</span></div>
+    <div class="comp-row"><span><span class="tag tag-green">SHIPPED</span> Relay layer eliminated entirely</span><span class="right" style="color:var(--green);">Teams filtering now $0</span></div>
+    <div class="comp-row"><span><span class="tag tag-green">SHIPPED</span> REPLY_SKIP flooding fix</span><span class="right" style="color:var(--green);">Stopped 40+ Sonnet wakeups/day</span></div>
+    <div class="comp-row"><span><span class="tag tag-green">SHIPPED</span> Context reduction (31K → 5K tokens)</span><span class="right" style="color:var(--green);">Every API call cheaper</span></div>
+    <div class="comp-row"><span><span class="tag tag-green">SHIPPED</span> Zombie relay session killed</span><span class="right" style="color:var(--green);">Stopped $248 cumulative bleed</span></div>
   </div>
-  <p style="font-size:0.85em; margin-top:1em;">March was a <span class="accent">build month</span>. April steady-state will be significantly lower.<br>
-  <span class="accent-green">Target: &lt;$1,500/mo ($50/day active)</span></p>
+  
+  <div class="callout green" style="margin-top:1.5em;">
+    <p>March was a <strong>build month</strong>. Infrastructure investment drove the spend. April steady-state target: <strong style="color:var(--green);">&lt;$1,500/mo</strong> for Simon, <strong style="color:var(--green);">&lt;$8,000/mo</strong> org-wide.</p>
+  </div>
 </section>
 
-<!-- SLIDE 10: Fleet View -->
+<hr class="divider">
+
+<!-- 08: FLEET VIEW -->
 <section>
-  <h2>The Full AI Fleet</h2>
-  <h3>32 AI staff members — March spend</h3>
-  <table class="clean">
-    <tr><th>Role</th><th>Exec Sponsor</th><th class="right">Spend</th><th class="right">%</th><th>Function</th></tr>
+  <h2><span class="section-num">08</span> The Full AI Fleet</h2>
+  <p class="section-sub">32 AI staff members — March spend ranked</p>
+  <table>
+    <tr><th>AI Staff</th><th>Exec Sponsor</th><th class="right">Spend</th><th class="right">%</th><th>Function</th></tr>
     <tr><td>Romer</td><td>Brent (CEO)</td><td class="right">$3,672</td><td class="right">30%</td><td>Strategy, sales intel, CIM</td></tr>
     <tr><td>Simon</td><td>Ray (CTO)</td><td class="right">$2,573</td><td class="right">21%</td><td>CTO ops, Teams, tooling</td></tr>
     <tr><td>Revay</td><td>Evan (COO)</td><td class="right">$1,669</td><td class="right">14%</td><td>Ops, onboarding, metrics</td></tr>
@@ -348,129 +374,90 @@
     <tr><td>Marvin</td><td>Usman</td><td class="right">$715</td><td class="right">6%</td><td>Technical deep dives</td></tr>
     <tr><td>Jennifer</td><td>Jennifer H.</td><td class="right">$542</td><td class="right">4%</td><td>Team operations</td></tr>
     <tr><td>Minion</td><td>Darin Hansen</td><td class="right">$509</td><td class="right">4%</td><td>Cloud/DevOps</td></tr>
-    <tr><td>Automation</td><td>(System)</td><td class="right">$297</td><td class="right">2%</td><td>N8N, Fabric, PSA, Revii</td></tr>
-    <tr><td style="color:#64748b;">18 others</td><td style="color:#64748b;">Various</td><td class="right" style="color:#64748b;">$786</td><td class="right" style="color:#64748b;">6%</td><td style="color:#64748b;">Individual assistants</td></tr>
+    <tr><td>N8N + Fabric</td><td>(System)</td><td class="right">$297</td><td class="right">2%</td><td>Workflow automation</td></tr>
+    <tr><td style="color:var(--dim);">18 others</td><td style="color:var(--dim);">Various</td><td class="right" style="color:var(--dim);">$786</td><td class="right" style="color:var(--dim);">6%</td><td style="color:var(--dim);">Individual assistants</td></tr>
   </table>
-  <p class="footnote">C-suite AI staff (Romer + Simon + Revay) = $7,914 = 65% of total spend.</p>
 </section>
 
-<!-- SLIDE 11: Comparison -->
+<hr class="divider">
+
+<!-- 09: COMPARABLES -->
 <section>
-  <h2>What Does $12K/mo Buy?</h2>
-  <h3>Comparables</h3>
-  <div style="max-width:700px; margin:1em auto; text-align:left;">
-    <div class="card" style="margin-bottom:1em;">
-      <h4>$12,161/mo = Rev.io's Entire AI Staff</h4>
-      <p style="font-size:0.8em; line-height:1.6;">32 AI employees. 24/7 availability. Real-time Teams/Slack/email monitoring for the entire leadership team. Automated intelligence briefs. Incident response. Custom tool development. Meeting synthesis. Strategic analysis. Self-optimizing cost structure.</p>
+  <h2><span class="section-num">09</span> What Does $12K/mo Buy?</h2>
+  <p class="section-sub">Comparables</p>
+  
+  <div class="callout">
+    <p><strong>$12,161/mo = Rev.io's entire AI staff.</strong> 32 AI employees. 24/7 availability. Real-time Teams/Slack/email monitoring across the entire leadership team. Automated intelligence briefs. Incident response. Custom tool development. Meeting synthesis. Strategic analysis. Self-optimizing cost structure.</p>
+  </div>
+  
+  <div class="cards">
+    <div class="card">
+      <h4>Same Money Buys (Human)</h4>
+      <p>One junior analyst.<br><span style="color:var(--dim);">$145K/year. 40 hrs/week. 2 weeks PTO. Benefits. 3-month ramp. Management overhead. Can't code. Sleeps 8 hours.</span></p>
     </div>
-    <div class="grid-2">
-      <div class="card">
-        <h4>Same Money Buys (Human)</h4>
-        <p style="font-size:0.8em; line-height:1.6;">
-          One junior analyst<br>
-          <span style="color:#64748b;">$145K/year, 40 hrs/week, 2 weeks PTO, needs benefits, ramp time, management overhead</span>
-        </p>
-      </div>
-      <div class="card">
-        <h4>To Replace the AI Fleet</h4>
-        <p style="font-size:0.8em; line-height:1.6;">
-          3-5 EAs + 1 DevOps engineer + 1 analyst<br>
-          <span style="color:#64748b;">$500K-800K/year. And they still can't read 56 chats simultaneously or write code at 2am.</span>
-        </p>
-      </div>
+    <div class="card">
+      <h4>To Replace the AI Fleet</h4>
+      <p>3-5 EAs + 1 DevOps engineer + 1 analyst.<br><span style="color:var(--dim);">$500K-800K/year. And they still can't read 56 chats simultaneously or build tools at 2am.</span></p>
     </div>
   </div>
 </section>
 
-<!-- SLIDE 12: Strategic Value -->
+<hr class="divider">
+
+<!-- 10: STRATEGIC VALUE -->
 <section>
-  <h2>Beyond Token Math</h2>
-  <h3>Strategic value to Rev.io</h3>
-  <div style="max-width:750px; margin:1em auto; text-align:left; font-size:0.85em;">
-    <div class="card" style="margin-bottom:0.8em;">
-      <p><span class="accent" style="font-weight:700;">Dog-fooding AI operations.</span> Rev.io sells AI capabilities to MSPs. Our CTO, CEO, and COO running AI staff members is not just efficiency — it's product intelligence. Every API gap Simon hits, every workflow that works or fails, directly informs what we build for customers.</p>
-    </div>
-    <div class="card" style="margin-bottom:0.8em;">
-      <p><span class="accent-green" style="font-weight:700;">Organizational AI literacy.</span> 32 keys = 20+ humans using AI assistants daily. This is not a pilot. This is institutional capability building. When competitors are still debating AI policy, Rev.io's leadership team has 2 months of operational experience.</p>
-    </div>
-    <div class="card">
-      <p><span class="accent-amber" style="font-weight:700;">Compounding returns.</span> Every tool Simon builds, every workflow Revay automates, every integration Romer identifies — it persists. Month 2 is cheaper and more capable than Month 1. The AI fleet gets better while humans plateau.</p>
-    </div>
+  <h2><span class="section-num">10</span> Beyond Token Math</h2>
+  <p class="section-sub">Strategic value to Rev.io</p>
+  
+  <div class="callout" style="margin-bottom:1em;">
+    <p><strong style="color:var(--cyan);">Dog-fooding AI operations.</strong> Rev.io sells AI capabilities to MSPs. Our CTO, CEO, and COO running AI staff members is not just efficiency — it's product intelligence. Every API gap, every workflow success or failure, directly informs what we build for customers.</p>
+  </div>
+  <div class="callout green" style="margin-bottom:1em;">
+    <p><strong style="color:var(--green);">Organizational AI literacy.</strong> 32 keys = 20+ humans using AI assistants daily. This is not a pilot. This is institutional capability. When competitors are still debating AI policy, Rev.io's leadership team has 2 months of operational experience.</p>
+  </div>
+  <div class="callout amber">
+    <p><strong style="color:var(--amber);">Compounding returns.</strong> Every tool built, every workflow automated, every integration identified — it persists. Month 2 is cheaper and more capable than Month 1. The AI fleet gets better while human costs stay flat.</p>
   </div>
 </section>
 
-<!-- SLIDE 13: What's Next -->
+<hr class="divider">
+
+<!-- 11: BOTTOM LINE -->
 <section>
-  <h2>April Outlook</h2>
-  <div style="max-width:700px; margin:1em auto; text-align:left;">
-    <div class="card" style="margin-bottom:1em;">
-      <h4>Cost Target</h4>
-      <div class="grid-2">
-        <div>
-          <p class="metric-med">March: <span class="accent-amber">$12,161</span></p>
-          <p style="font-size:0.75em; color:#94a3b8;">Build month. Infrastructure investment.</p>
-        </div>
-        <div>
-          <p class="metric-med">April Target: <span class="accent-green">&lt;$8,000</span></p>
-          <p style="font-size:0.75em; color:#94a3b8;">Steady state. Optimizations in place.</p>
-        </div>
-      </div>
+  <h2><span class="section-num">11</span> The Bottom Line</h2>
+  <div class="metric-row">
+    <div class="metric">
+      <div class="label">March Spend</div>
+      <div class="value cyan">$12,161</div>
+      <div class="note">32 AI staff members</div>
     </div>
-    <div class="card">
-      <h4>Upcoming Initiatives</h4>
-      <ul style="font-size:0.8em;">
-        <li>Cost dashboard — real-time spend visibility by key/model</li>
-        <li>Outcome tracking — log each deliverable with time-saved estimate</li>
-        <li>Simon: Notion meeting extraction (automated, daily)</li>
-        <li>Simon: Board prep automation (this deck, programmatic updates)</li>
-        <li>Fleet: Model tiering audit across all 32 keys</li>
-      </ul>
+    <div class="metric">
+      <div class="label">Human Equivalent</div>
+      <div class="value amber">$500K+</div>
+      <div class="note">Annual to replicate</div>
     </div>
+    <div class="metric">
+      <div class="label">Estimated ROI</div>
+      <div class="value green">&gt;3x</div>
+      <div class="note">Conservative, first month</div>
+    </div>
+  </div>
+  
+  <div class="callout" style="text-align:center; margin-top:2em;">
+    <p style="font-size:1.1em; line-height:1.6;">
+      Rev.io spent less on its <strong style="color:var(--cyan);">entire AI workforce</strong> in March<br>
+      than a <strong style="color:var(--amber);">single junior hire</strong> would cost per year.<br>
+      <strong style="color:var(--green);">And it's getting cheaper every month.</strong>
+    </p>
   </div>
 </section>
 
-<!-- SLIDE 14: Summary -->
-<section>
-  <h2>The Bottom Line</h2>
-  <div class="grid-3" style="margin-top:1.5em;">
-    <div class="card">
-      <h4>March Spend</h4>
-      <p class="metric-large accent">$12,161</p>
-      <p style="font-size:0.7em; color:#94a3b8;">32 AI staff members</p>
-    </div>
-    <div class="card">
-      <h4>Human Equivalent</h4>
-      <p class="metric-large accent-amber">$500K+</p>
-      <p style="font-size:0.7em; color:#94a3b8;">Annual to replicate</p>
-    </div>
-    <div class="card">
-      <h4>ROI</h4>
-      <p class="metric-large accent-green">>3x</p>
-      <p style="font-size:0.7em; color:#94a3b8;">Conservative, first month</p>
-    </div>
-  </div>
-  <p style="font-size:1.1em; margin-top:1.5em; line-height:1.5;">
-    Rev.io spent less on its <span class="accent">entire AI workforce</span> in March<br>
-    than a <span class="accent-amber">single junior hire</span> would cost per year.<br>
-    <span class="accent-green">And it's getting cheaper every month.</span>
-  </p>
-  <p class="footnote">Data source: Anthropic API usage export, March 1-31, 2026. Supplemented by operational logs and architecture documentation.</p>
-</section>
+<!-- FOOTER -->
+<div class="footer">
+  <p>Data source: Anthropic API usage export, March 1-31, 2026. Supplemented by operational logs and architecture documentation.<br>
+  Prepared by Simon — April 3, 2026</p>
+</div>
 
 </div>
-</div>
-<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
-<script>
-Reveal.initialize({
-  hash: true,
-  transition: 'fade',
-  transitionSpeed: 'fast',
-  controls: true,
-  progress: true,
-  center: true,
-  width: 1280,
-  height: 720
-});
-</script>
 </body>
 </html>
